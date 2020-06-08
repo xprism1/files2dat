@@ -35,11 +35,7 @@ def add_rom(datfile, soup, game_name, dict, glo): # adds a new entry under <game
     datfile_added = str(soup)
     with open(datfile, "w+") as f:
         f.write(datfile_added) # writes modifications to datfile
-
-datfile = open("DSJ.dat", "r")
-xml_data = datfile.read()
-soup = BeautifulSoup(xml_data, 'lxml')
-
+        
 # Getting user information
 print("files2dat v1.0 by xprism")
 path = str(input("Enter the path to the folder containing files (and files only), e.g. C:\\Users. Please replace each backslash with 2 backslashes! "))
@@ -56,7 +52,10 @@ if global_entries == "y":
         glo[key] = value
         if cont == 'n':
             add_more = False
-        
+            
+datfile = open(datfilename, "r")
+xml_data = datfile.read()
+soup = BeautifulSoup(xml_data, 'lxml')     
         
 from getfileinfo import fileinfo # import fileinfo function from getfileinfo.py
 print("Getting file info...")
