@@ -40,19 +40,10 @@ datfile = open("DSJ.dat", "r")
 xml_data = datfile.read()
 soup = BeautifulSoup(xml_data, 'lxml')
 
-'''
-Code to test add_set and add_rom:
-    
-add_set("DSJ.dat", soup, "Pokemon - Gold Version 1997 (v3.01) (USA, Europe)", "Pokemon - Gold Version 1997 (v3.01) (USA, Europe)")
-dict = {'name': 'Poke', 'size': '123', 'crc': '123ab'}
-add_rom("DSJ.dat", soup, "Pokemon - Gold Version 1997 (v3.01) (USA, Europe)", dict)
-'''
-
 # Getting user information
 print("files2dat v1.0 by xprism")
 path = str(input("Enter the path to the folder containing files (and files only), e.g. C:\\Users. Please replace each backslash with 2 backslashes! "))
 datfilename = str(input("Enter the path to the datfile, e.g. C:\\datfile.dat. Please replace each backslash with 2 backslashes! "))
-# For testing: path = gold/ and datfilename = DSJ.dat
 
 global_entries = str(input("Do you want to batch add entries for all the files? E.g. status = 'verified'. [y/n] "))
 add_more = True
