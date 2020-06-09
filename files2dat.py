@@ -38,8 +38,8 @@ def add_rom(datfile, soup, game_name, dict, glo): # adds a new entry under <game
         
 # Getting user information
 print("files2dat v1.0 by xprism")
-path = str(input("Enter the path to the folder containing files (and files only), e.g. C:\\Users. Please replace each backslash with 2 backslashes! "))
-datfilename = str(input("Enter the path to the datfile, e.g. C:\\datfile.dat. Please replace each backslash with 2 backslashes! "))
+path = str(input("Enter the path to the folder containing files (and files only), e.g. C:\\Users "))
+datfilename = str(input("Enter the path to the datfile, e.g. C:\\datfile.dat "))
 
 global_entries = str(input("Do you want to batch add entries for all the files? E.g. status = 'verified'. [y/n] "))
 add_more = True
