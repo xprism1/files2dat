@@ -1,3 +1,10 @@
+'''
+files2dat v1.2 by xprism 2020
+
+getfileinfo.py: Gets size, crc32, md5 and sha1 from a file, and stores it in a list of dictionaries.
+Data structure: dir = [{'size': '123', 'name': 'a', 'crc32': 'b', 'md5': 'c', 'sha1': 'd'}, {...}]
+'''
+
 import os
 def size(filename):
     st = os.stat(filename)
@@ -29,6 +36,7 @@ def sha1(filename):
             sha1.update(data)
     return sha1.hexdigest()
 
+# Calculates size, crc32, md5, sha1 using the functions above and stores it in a list of dictionaries
 def fileinfo(path):
     list_of_files = os.listdir(path)
     dir = []
