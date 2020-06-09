@@ -15,5 +15,5 @@ Run `main.py`.
 
 ## Notes:
 - Do not put the python scripts or the datfile inside the folder with files you want to add. Move them out of the folder.
-- Remove the `__pycache` folder before executing the script
+- Remove the `__pycache__` folder before executing the script
 - Only answer y or n to the [y/n] questions
