@@ -41,11 +41,3 @@ def add_rom(datfile, soup, game_name, dict, glo):
     datfile_added = str(soup)
     with open(datfile, "w+") as f:
         f.write(datfile_added) # writes modifications to datfile
-
-'''
-Code to test add_set and add_rom:
-    
-add_set("DSJ.dat", soup, "Pokemon - Gold Version 1997 (v3.01) (USA, Europe)", "Pokemon - Gold Version 1997 (v3.01) (USA, Europe)")
-dict = {'name': 'Poke', 'size': '123', 'crc': '123ab'}
-add_rom("DSJ.dat", soup, "Pokemon - Gold Version 1997 (v3.01) (USA, Europe)", dict)
-'''
