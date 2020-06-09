@@ -14,6 +14,6 @@ Install both with `pip install beautifulsoup4 lxml`
 Run `files2dat.py`.
 
 ## Notes:
+- Do not put the python scripts or the datfile inside the folder with files you want to add. Move them out of the folder.
 - Only answer y or n to the [y/n] questions
-- If your path has a backslash, replace it with 2 backslashes (e.g. `C:\\Users` instead of `C:\Users`)
-- After script has completed, please open the datfile in a text editor, and manually remove <html> (at the start of the file) as well as </html> (at the end of the file).
+- After script has completed, please open the datfile in a text editor, and manually remove `<html>`, `<body` (at the start of the file) as well as `</body>`, `</html>` (at the end of the file).
