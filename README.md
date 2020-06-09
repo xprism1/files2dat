@@ -4,6 +4,7 @@
 Adds hashes of files in a folder to a datfile, with support for batch adding sub-entries (e.g. status="verified")
 
 ## Requirements:
+- Python 3
 - Beautiful Soup 4
 - LXML parser
 
