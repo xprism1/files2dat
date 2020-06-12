@@ -1,7 +1,7 @@
 # files2dat
 
 ## Introduction
-Adds hashes of files in a folder to a datfile, with support for batch adding sub-entries for those files (e.g. status="verified")
+Adds hashes of files in a folder to a datfile, with support for batch adding sub-entries for those files (e.g. status="verified"), as well as sorting the resultant datfile.
 
 ## Requirements:
 - Python 2 and 3
