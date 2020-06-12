@@ -18,4 +18,4 @@ Run `main.py`.
 ## Notes:
 - Do not put the python scripts or the datfile inside the folder with files you want to add. Move them out of the folder.
 - Remove the `__pycache__` folder before executing the script
-- Move the <header> section from the bottom to the top of the sorted file
+- Move the `<header>` section from the bottom to the top of the sorted file
