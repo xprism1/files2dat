@@ -1,15 +1,16 @@
 '''
-files2dat v1.2 by xprism 2020
+files2dat v1.3 by xprism 2020
 
 main.py: Main program
 '''
 
-print("/**********************************/")
-print("/  files2dat v1.2 by xprism 2020  /")
-print("/********************************/")
+print("  /*********************************/")
+print(" /  files2dat v1.3 by xprism 2020  /")
+print("/*********************************/")
 print("WARNING: Do not put the python scripts or the datfile inside the folder with files you want to add. Quit the program now and move them out if so.")
 
 # Getting user information
+# For testing: path = gold/ and datfilename = DSJ.dat
 path = str(input("Enter the path to the folder containing files (and files only), e.g. C:\\roms: "))
 datfilename = str(input("Enter the path to the datfile, e.g. C:\\datfile.dat: "))
 datfileoutput = str(input("Enter the path to the output file, e.g. C:\\datfile_modified.dat: "))
@@ -25,6 +26,10 @@ if global_entries == "y":
         glo[key] = value
         if cont == 'n':
             add_more = False
+
+sort = str(input("Do you want to sort the datfile by set name? i.e. sort by the name in <game> [y/n]: "))
+if sort == "y":
+    sortedname = str(input("Enter the filename for the sorted datfile: "))
 
 # Reading datfile
 from bs4 import BeautifulSoup
@@ -51,7 +56,6 @@ for i in range(len(info)):
     add_rom(datfilename, soup, filename_wo_ext, info[i], glo)
 print("Datfile modified successfully.")
 
-
 from lxml import etree
 
 # Resetting the already existing indentation, allowing the output to generate its own indentation correctly
@@ -77,18 +81,44 @@ with open(datfileoutput, 'r+') as fd:
     fd.writelines(line for line in lines if line.strip())
     fd.truncate()
 
-# Adds <!DOCTYPE> to start of output file
+# Removes the non-pretty printed, modified original file
+import os
+os.remove(datfilename)
+
+# Sorts by set name
+import sys
+import subprocess
+if sort == "y":
+    # Detects if platform is windows or linux, then runs xmlsort.py in python2
+    if sys.platform == 'win32':
+        python2_command = ["C:\\Python27\\python.exe", "xmlsort.py", datfileoutput, sortedname, "-x", "header"]
+    if sys.platform == 'linux':
+        python2_command = ["python2", "xmlsort.py", datfileoutput, sortedname, "-x", "header"]
+    process = subprocess.Popen(python2_command, stdout=subprocess.PIPE)
+    output, error = process.communicate()
+      
+# Adds <!DOCTYPE> and <?xml version> to start of output file
 def line_prepender(filename, line):
     with open(filename, 'r+') as f:
         content = f.read()
         f.seek(0, 0)
         f.write(line.rstrip('\r\n') + '\n' + content)
-        
+
+# Removes first line from datfileoutput (<?xml version>)
+with open(datfileoutput, 'r') as fin:
+    data = fin.read().splitlines(True)
+with open(datfileoutput, 'w') as fout:
+    fout.writelines(data[1:])
+
 line_prepender(datfileoutput, '<!DOCTYPE datafile PUBLIC "-//Logiqx//DTD ROM Management Datafile//EN" "http://www.logiqx.com/Dats/datafile.dtd">')
+line_prepender(datfileoutput, '<?xml version="1.0"?>')
+if sort == "y":
+    line_prepender(sortedname, '<!DOCTYPE datafile PUBLIC "-//Logiqx//DTD ROM Management Datafile//EN" "http://www.logiqx.com/Dats/datafile.dtd">')
+    line_prepender(sortedname, '<?xml version="1.0"?>')
 print("Datfile prettified successfully.")
 
-# Removes the non-pretty printed, modified original file
-import os
-os.remove(datfilename)
-
-print("Output file: " + datfileoutput)
+if sort == "y":
+    print("Output file (unsorted): " + datfileoutput)
+    print("Output file (sorted): " + sortedname)
+else:
+    print("Output file: " + datfileoutput)
