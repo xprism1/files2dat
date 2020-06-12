@@ -8,9 +8,9 @@ Adds hashes of files in a folder to a datfile, with support for batch adding sub
 - Beautiful Soup 4
 - LXML parser
 
-Install both with `pip install beautifulsoup4 lxml`
+Install bs4 and lxml with `pip install beautifulsoup4 lxml`
 
-Additionally, if you are on Windows, replace `C:\\Python27\\python.exe` in line 94 with the path to the Python 2 executable. Remember to use double backslash.
+Additionally, if you are on Windows, replace `C:\\Python27\\python.exe` in line 94 of `main.py` with the path to the Python 2 executable. Remember to use double backslashes.
 
 ## How to use:
 Run `main.py`.
